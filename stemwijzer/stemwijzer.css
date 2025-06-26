@@ -1,0 +1,206 @@
+:root {
+      --lichtblauw: #EDF2F4; 
+      --grijsblauw: #8D99AE;
+      --donkerblauw: #2B2D42;
+      --beige: #EAE6E3;
+      --zwartbruin: #352D27;
+      --transition-time: 0.3s;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: var(--lichtblauw);
+      color: var(--zwartbruin);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--donkerblauw);
+      color: var(--beige);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .logo span {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--beige);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--beige);
+      margin: 4px 0;
+      transition: all var(--transition-time) ease;
+    }
+
+    .mobile-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--donkerblauw);
+      display: none;
+      flex-direction: column;
+      padding: 1rem 2rem;
+      gap: 1rem;
+    }
+
+    .mobile-menu a {
+      color: var(--beige);
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .hero {
+      background-color: var(--lichtblauw);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.5rem;
+      color: var(--donkerblauw);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--grijsblauw);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero button {
+      background-color: var(--grijsblauw);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Quicksand', sans-serif;
+      transition: background-color var(--transition-time) ease;
+    }
+
+    .hero button:hover {
+      background-color: #7a8a9e;
+    }
+
+    .intro {
+      background-color: var(--beige);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .intro h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.8rem;
+      color: var(--donkerblauw);
+      margin-bottom: 1rem;
+    }
+
+    .intro p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1rem;
+      color: var(--zwartbruin);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+      background-color: var(--lichtblauw);
+    }
+
+    .card {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform var(--transition-time) ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.3rem;
+      color: var(--donkerblauw);
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: var(--zwartbruin);
+    }
+
+    footer {
+      background-color: var(--donkerblauw);
+      color: var(--beige);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 960px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }

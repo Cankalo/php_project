@@ -1,0 +1,227 @@
+:root {
+    --lichtblauw: #EDF2F4;
+    --grijsblauw: #8D99AE;
+    --donkerblauw: #2B2D42;
+    --beige: #EAE6E3;
+    --zwartbruin: #352D27;
+    --transition-time: 0.3s;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--lichtblauw);
+    color: var(--zwartbruin);
+    line-height: 1.6;
+  }
+
+  header {
+    background-color: var(--donkerblauw);
+    color: var(--beige);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .logo span {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  nav a {
+    color: var(--beige);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-time) ease;
+  }
+
+  nav a:hover {
+    color: white;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--beige);
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: all var(--transition-time) ease;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--donkerblauw);
+    display: none;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    gap: 1rem;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .mobile-menu a {
+    color: var(--beige);
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .hero {
+    background-color: var(--lichtblauw);
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  .hero h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.2rem;
+    color: var(--donkerblauw);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    color: var(--grijsblauw);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .partijen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+    background-color: var(--beige);
+  }
+
+  .partij-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform var(--transition-time) ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .partij-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .partij-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    color: var(--donkerblauw);
+    margin-top: 0;
+  }
+
+  .partij-card p {
+    font-size: 0.95rem;
+    color: var(--zwartbruin);
+  }
+
+  .meer-info {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--grijsblauw);
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+.partij-card img {
+  width: 80px;       /* pas aan naar wens */
+  height: auto;
+  margin-bottom: 0.75rem;
+  border-radius: 50%; /* ronde afbeeldingen */
+  object-fit: cover;
+}
+
+  footer {
+    background-color: var(--donkerblauw);
+    color: var(--beige);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  footer h1 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  footer p {
+    font-size: 0.85rem;
+    margin: 0.3rem 0;
+  }
+
+  /* Media Queries */
+  @media (max-width: 960px) {
+    nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--donkerblauw);
+      flex-direction: column;
+      display: none;
+      padding: 1rem 1.5rem;
+      gap: 1rem;
+      z-index: 999;
+    }
+
+    nav.active {
+      display: flex;
+      animation: slideDown 0.3s ease forwards;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+  }
+
+  @media (min-width: 961px) {
+    .menu-toggle {
+      display: none;
+    }
+  }

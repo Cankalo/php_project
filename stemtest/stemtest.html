@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stemwijzer Test - Neutraal Kieslab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --lichtblauw: #EDF2F4; 
+      --grijsblauw: #8D99AE;
+      --donkerblauw: #2B2D42;
+      --beige: #EAE6E3;
+      --zwartbruin: #352D27;
+      --transition-time: 0.3s;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: var(--lichtblauw);
+      color: var(--zwartbruin);
+    }
+
+    header {
+      background-color: var(--donkerblauw);
+      color: var(--beige);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .logo span {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+    main {
+      max-width: 700px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Inter', sans-serif;
+      color: var(--donkerblauw);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      color: var(--zwartbruin);
+    }
+
+    .question {
+      background-color: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+    }
+
+    .options label {
+      display: block;
+      margin: 0.5rem 0;
+    }
+
+    button {
+      background-color: var(--grijsblauw);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background-color: var(--donkerblauw);
+      color: var(--beige);
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+    footer p {
+        color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+ <div class="logo">
+      <img src="./img/logo-neutraal-kieslab-lichtblauw.svg" alt="Logo">
+      <span>Neutraal Kieslab</span>
+    </div>  </header>
+
+  <main>
+    <h1>Stemwijzer Test</h1>
+    <p>Beantwoord de onderstaande 7 neutrale vragen om te zien welke partij het beste bij jou past.</p>
+
+    <form id="testForm">
+
+      <div class="question">
+        <h2>Vraag 1</h2>
+        <p>Hoe belangrijk vind je duurzaamheid in het beleid?</p>
+        <div class="options">
+          <label><input type="radio" name="vraag1" value="groenlinks"> Zeer belangrijk</label>
+          <label><input type="radio" name="vraag1" value="pvda"> Belangrijk</label>
+          <label><input type="radio" name="vraag1" value="vvd"> Niet belangrijk</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>Vraag 2</h2>
+        <p>Moet Nederland meer investeren in openbaar vervoer?</p>
+        <div class="options">
+          <label><input type="radio" name="vraag2" value="groenlinks"> Ja</label>
+          <label><input type="radio" name="vraag2" value="sp"> Gedeeltelijk</label>
+          <label><input type="radio" name="vraag2" value="fvd"> Nee</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>Vraag 3</h2>
+        <p>Wat vind je van minder regelgeving voor bedrijven?</p>
+        <div class="options">
+          <label><input type="radio" name="vraag3" value="vvd"> Tegen minder regels</label>
+          <label><input type="radio" name="vraag3" value="d66"> Neutraal</label>
+          <label><input type="radio" name="vraag3" value="pvda"> Voor meer regels</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>Vraag 4</h2>
+        <p>Moeten belastingen verlaagd worden?</p>
+        <div class="options">
+          <label><input type="radio" name="vraag4" value="vvd"> Ja</label>
+          <label><input type="radio" name="vraag4" value="d66"> Gedeeltelijk</label>
+          <label><input type="radio" name="vraag4" value="sp"> Nee</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>Vraag 5</h2>
+        <p>Moet er strenger op migratiebeleid worden gehandhaafd?</p>
+        <div class="options">
+          <label><input type="radio" name="vraag5" value="fvd"> Ja</label>
+          <label><input type="radio" name="vraag5" value="pvda"> Neutraal</label>
+          <label><input type="radio" name="vraag5" value="groenlinks"> Nee</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>Vraag 6</h2>
+        <p>Is betaalbaar wonen prioriteit voor de overheid?</p>
+        <div class="options">
+          <label><input type="radio" name="vraag6" value="sp"> Ja</label>
+          <label><input type="radio" name="vraag6" value="pvda"> Belangrijk</label>
+          <label><input type="radio" name="vraag6" value="vvd"> Minder belangrijk</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <h2>Vraag 7</h2>
+        <p>Moet Nederland meer investeren in wetenschap en innovatie?</p>
+        <div class="options">
+          <label><input type="radio" name="vraag7" value="d66"> Ja</label>
+          <label><input type="radio" name="vraag7" value="vvd"> Gedeeltelijk</label>
+          <label><input type="radio" name="vraag7" value="sp"> Nee</label>
+        </div>
+      </div>
+
+      <button type="submit">Toon Resultaat</button>
+    </form>
+
+    <div id="resultaat" style="margin-top: 2rem;"></div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Neutraal Kieslab</p>
+    <p>Privacybeleid | Contact</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("testForm");
+    const resultaatDiv = document.getElementById("resultaat");
+
+    // Partij scores
+    const partijScores = {
+      "vvd": 0,
+      "pvda": 0,
+      "sp": 0,
+      "groenlinks": 0,
+      "d66": 0,
+      "fvd": 0
+    };
+
+    const partijNamen = {
+      "vvd": "VVD",
+      "pvda": "PvdA",
+      "sp": "SP",
+      "groenlinks": "GroenLinks",
+      "d66": "D66",
+      "fvd": "FvD"
+    };
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Reset scores
+      for (let key in partijScores) {
+        partijScores[key] = 0;
+      }
+
+      // Tel punten per partij
+      for (let i = 1; i <= 7; i++) {
+        const vraag = document.querySelector(`input[name="vraag${i}"]:checked`);
+        if (!vraag) continue;
+
+        const gekozenPartij = vraag.value;
+        partijScores[gekozenPartij]++;
+      }
+
+      // Zoek winnaar
+      let hoogsteScore = 0;
+      let kandidaten = [];
+
+      for (let partij in partijScores) {
+        if (partijScores[partij] > hoogsteScore) {
+          hoogsteScore = partijScores[partij];
+          kandidaten = [partij];
+        } else if (partijScores[partij] === hoogsteScore) {
+          kandidaten.push(partij);
+        }
+      }
+
+      // Toon resultaat
+      if (kandidaten.length === 1) {
+        resultaatDiv.innerHTML = `<h3>De partij die het beste bij jou past is:</h3><h2 style="color: var(--donkerblauw);">${partijNamen[kandidaten[0]]}</h2>`;
+      } else {
+        const namen = kandidaten.map(p => partijNamen[p]).join(', ');
+        resultaatDiv.innerHTML = `<h3>Jouw meest overeenkomstige partij(en):</h3><h2 style="color: var(--donkerblauw);">${namen}</h2>`;
+      }
+    });
+
+    
+  </script>
+
+</body>
+</html>

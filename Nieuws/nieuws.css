@@ -1,0 +1,218 @@
+ :root {
+      --lichtblauw: #EDF2F4; 
+      --grijsblauw: #8D99AE;
+      --donkerblauw: #2B2D42;
+      --beige: #EAE6E3;
+      --zwartbruin: #352D27;
+      --transition-time: 0.3s;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Quicksand', sans-serif;
+      background-color: var(--lichtblauw);
+      color: var(--zwartbruin);
+      line-height: 1.6;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: var(--donkerblauw);
+      color: var(--beige);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1000;
+    }
+
+ 
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .logo span {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--beige);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--beige);
+      margin: 4px 0;
+      transition: all var(--transition-time) ease;
+    }
+
+    .mobile-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--donkerblauw);
+      display: none;
+      flex-direction: column;
+      padding: 1rem 2rem;
+      gap: 1rem;
+    }
+
+    .mobile-menu a {
+      color: var(--beige);
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    main {
+      flex: 1;
+      max-width: 1200px;
+      margin: 4rem auto 2rem;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      color: var(--donkerblauw);
+      margin-bottom: 2rem;
+    }
+
+    .carousel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .news-card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+
+    .news-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .news-card .content {
+      padding: 1.5rem;
+    }
+
+    .news-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.3rem;
+      color: var(--donkerblauw);
+      margin-bottom: 0.5rem;
+    }
+
+    .news-card p {
+      font-size: 1rem;
+      color: var(--zwartbruin);
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .controls button {
+      background-color: var(--grijsblauw);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .dots {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      background-color: #bbb;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: var(--donkerblauw);
+    }
+
+    footer {
+      background-color: var(--donkerblauw);
+      color: var(--beige);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      .carousel {
+        grid-template-columns: 1fr;
+      }
+
+      .news-card img {
+        height: 160px;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }

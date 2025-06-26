@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./nieuws.css">
+</head>
+<body>
+  <header>
+  <div class="logo">
+      <img src="./img/logo-neutraal-kieslab-lichtblauw.svg" alt="Logo">
+      <span>Neutraal Kieslab</span>
+    </div>   
+     <nav id="main-nav">
+      <a href="../Homepagina/home.html">Homepagina</a>
+      <a href="../stemwijzer/stemwijzer.html">stemwijzer</a>
+      <a href="../partijen/index.html">Partijen</a>
+      <a href="../over ons/index.html">Over ons</a>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <main>
+    <h2>Laatste Nieuws</h2>
+
+    <div class="carousel" id="carousel">
+      <!-- Cards worden dynamisch geladen -->
+    </div>
+
+    <div class="controls">
+      <button onclick="prevSlide()">Vorige</button>
+      <div class="dots" id="dots"></div>
+      <button onclick="nextSlide()">Volgende</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Neutraal Kieslab</p>
+    <p>Privacybeleid | Contact</p>
+  </footer>
+
+  <script src="./nieuws.js"></script>
+</body>
+</html>

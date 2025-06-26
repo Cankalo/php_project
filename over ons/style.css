@@ -1,0 +1,247 @@
+:root {
+     --lichtblauw: #EDF2F4;
+    --grijsblauw: #8D99AE;
+    --donkerblauw: #2B2D42;
+    --beige: #EAE6E3;
+    --zwartbruin: #352D27;
+    --transition-time: 0.3s;
+}
+
+body {
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+  background-color: var(--acikmavi);
+  color: var(--koyumavi);
+  line-height: 1.6;
+}
+
+  header {
+    background-color: var(--donkerblauw);
+    color: var(--beige);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .logo span {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  nav a {
+    color: var(--beige);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-time) ease;
+  }
+
+  nav a:hover {
+    color: white;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--beige);
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: all var(--transition-time) ease;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--donkerblauw);
+    display: none;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    gap: 1rem;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .mobile-menu a {
+    color: var(--beige);
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  #main-nav.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--donkerblauw);
+  padding: 1rem 2rem;
+  gap: 1rem;
+}
+
+ /* Menü varsayılan olarak büyük ekranlarda yatay ve açık */
+#main-nav {
+  display: flex;
+  gap: 1.5rem;
+  position: static; /* normal flow’da */
+  background-color: transparent;
+  padding: 0;
+  animation: none !important;
+}
+
+/* Menü toggle butonu sadece küçük ekranda görünür */
+.menu-toggle {
+  display: none;
+}
+
+/* 960px ve altındaki ekranlar için */
+@media (max-width: 960px) {
+  #main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--donkerblauw);
+    flex-direction: column;
+    padding: 1rem 2rem;
+    gap: 1rem;
+  }
+
+  #main-nav.active {
+    display: flex;
+    animation: slideDown 0.3s ease forwards;
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+}
+
+.hero {
+  background-color: var(--lichtblauw);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.hero h2 {
+  font-family: "Inter", sans-serif;
+  font-size: 2.5rem;
+  color: var(--koyumavi);
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--grimavi);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.over-ons-container{
+max-width: 900px;
+margin: 3rem auto;
+padding: 0 2rem;
+background-color: var(--beige);
+border-radius: 10px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+padding: 3rem;
+}
+
+.over-ons-container h3{
+    font-family: 'Inter', sans-serif;
+    font-size: 1.8rem;
+    color: var(--donkerblauw);
+    margin-top: 2rem;
+}
+
+.over-ons-container p{
+    font-size: 1rem;
+    color: var(--zwartbruin);
+    margin-bottom: 1.5rem;
+}
+
+.team-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minimax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.team-card{
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover{
+    transform: translateY(-5px);
+}
+
+.team-card h4{
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    color: var(--donkerblauw);
+    margin-bottom: 0.5rem;
+}
+
+.team-card p{
+    font-size: 0.95rem;
+    color: var(--zwartbruin);
+}
+
+footer{
+    background-color: var(--donkerblauw);
+    color: var(--beige);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+footer h1{
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+footer p{
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}

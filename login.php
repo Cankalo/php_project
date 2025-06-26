@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Inloggen</title>
+  <link rel="stylesheet" href="css/stijl.css">
+</head>
+<body style="background-image: url('img/logo-tegels-achtergrond.svg');">
+  <div class="overlay"></div>
+
+  <div class="container">
+    <h2>Inloggen</h2>
+    <form method="post" action="inloggen/verwerk_login.php">
+      <label for="gebruikersnaam">Gebruikersnaam:</label>
+      <input type="text" name="gebruikersnaam" id="gebruikersnaam" required>
+
+      <label for="wachtwoord">Wachtwoord:</label>
+      <input type="password" name="wachtwoord" id="wachtwoord" required>
+
+      <input type="submit" value="Inloggen">
+    </form>
+
+    <?php if (isset($_GET['fout'])): ?>
+      <p style="color:red; margin-top:15px;">Foutieve inloggegevens.</p>
+    <?php endif; ?>
+
+    <a href="index.html" class="button">Terug naar home</a>
+  </div>
+</body>
+</html>
