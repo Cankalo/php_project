@@ -14,7 +14,6 @@ if ($resultaat->num_rows === 1) {
     $gebruiker = $resultaat->fetch_assoc();
     if (password_verify($wachtwoord, $gebruiker['wachtwoord'])) {
         $_SESSION['gebruiker'] = $gebruiker['gebruikersnaam'];
-        // Giriş başarılıysa ana web sayfasına yönlendir:
         header("Location: ../Homepagina/home.html");
         exit;
     }

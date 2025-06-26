@@ -202,7 +202,6 @@
     const form = document.getElementById("testForm");
     const resultaatDiv = document.getElementById("resultaat");
 
-    // Partij scores
     const partijScores = {
       "vvd": 0,
       "pvda": 0,
@@ -224,12 +223,10 @@
     form.addEventListener("submit", function(e) {
       e.preventDefault();
 
-      // Reset scores
       for (let key in partijScores) {
         partijScores[key] = 0;
       }
 
-      // Tel punten per partij
       for (let i = 1; i <= 7; i++) {
         const vraag = document.querySelector(`input[name="vraag${i}"]:checked`);
         if (!vraag) continue;
@@ -238,7 +235,6 @@
         partijScores[gekozenPartij]++;
       }
 
-      // Zoek winnaar
       let hoogsteScore = 0;
       let kandidaten = [];
 
@@ -251,7 +247,6 @@
         }
       }
 
-      // Toon resultaat
       if (kandidaten.length === 1) {
         resultaatDiv.innerHTML = `<h3>De partij die het beste bij jou past is:</h3><h2 style="color: var(--donkerblauw);">${partijNamen[kandidaten[0]]}</h2>`;
       } else {

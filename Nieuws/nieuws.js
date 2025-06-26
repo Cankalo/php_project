@@ -96,13 +96,11 @@ const nieuwsItems = [
       return Math.floor(currentIndex / itemsPerSlide);
     }
 
-    // Auto slide elke 5 seconden
     setInterval(nextSlide, 5000);
 
     document.addEventListener('DOMContentLoaded', () => {
-      renderCarousel();  // init carousel na DOM-ready
+      renderCarousel();  
 
-      // Menu toggle
       const menuToggle = document.getElementById('menu-toggle');
       const mainNav    = document.getElementById('main-nav');
 
