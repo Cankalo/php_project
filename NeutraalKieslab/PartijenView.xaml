@@ -1,0 +1,311 @@
+﻿<UserControl x:Class="NeutraalKieslab.PartijenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+
+    <UserControl.Resources>
+        <!-- Colors to match website -->
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#2C3E50"/>
+        <SolidColorBrush x:Key="LightBlue" Color="#5A6C7D"/>
+        <SolidColorBrush x:Key="AccentGreen" Color="#27AE60"/>
+        <SolidColorBrush x:Key="LightGray" Color="#ECF0F1"/>
+        <SolidColorBrush x:Key="DarkGray" Color="#7F8C8D"/>
+
+        <!-- Filter Button Style like website -->
+        <Style x:Key="WebsiteFilterButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource PrimaryBlue}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Margin" Value="8,4"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource LightBlue}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Party Card Style like website -->
+        <Style x:Key="WebsitePartyCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Padding" Value="25"/>
+            <Setter Property="MinHeight" Value="140"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="LightGray" Direction="270" ShadowDepth="2" Opacity="0.4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Background="{StaticResource LightGray}">
+
+            <!-- Header like website -->
+            <Border Background="White" Padding="40,30" Margin="0,0,0,30">
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Informatie over Politieke Partijen" 
+                              FontSize="32" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Hier vind je een overzicht van alle beschikbare" 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              HorizontalAlignment="Center" Margin="0,0,0,3"/>
+                    <TextBlock Text="politieke partijen met hun standpunten op" 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              HorizontalAlignment="Center" Margin="0,0,0,3"/>
+                    <TextBlock Text="verschillende onderwerpen, objectief en" 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              HorizontalAlignment="Center" Margin="0,0,0,3"/>
+                    <TextBlock Text="zonder beïnvloeding" 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Filter Buttons Section like website -->
+            <Border Background="White" Padding="40,25" Margin="0,0,0,30">
+                <StackPanel>
+                    <!-- First row of filters -->
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,0,0,10">
+                        <Button Content="Liberaal" Style="{StaticResource WebsiteFilterButtonStyle}" Click="FilterLiberaal"/>
+                        <Button Content="Sociaaldemocratisch" Style="{StaticResource WebsiteFilterButtonStyle}" Click="FilterSociaaldemocratisch"/>
+                        <Button Content="Rechts-populistisch" Style="{StaticResource WebsiteFilterButtonStyle}" Click="FilterRechtsPopulistisch"/>
+                        <Button Content="Progressief-liberaal" Style="{StaticResource WebsiteFilterButtonStyle}" Click="FilterProgressiefLiberaal"/>
+                    </WrapPanel>
+
+                    <!-- Second row of filters -->
+                    <WrapPanel HorizontalAlignment="Center" Margin="0,0,0,10">
+                        <Button Content="Linkse" Style="{StaticResource WebsiteFilterButtonStyle}" Click="FilterLinkse"/>
+                        <Button Content="Millieucentrum" Style="{StaticResource WebsiteFilterButtonStyle}" Click="FilterMilieu"/>
+                        <Button Content="Conservatief" Style="{StaticResource WebsiteFilterButtonStyle}" Click="FilterConservatief"/>
+                        <Button Content="Overige" Style="{StaticResource WebsiteFilterButtonStyle}" Click="FilterOverige"/>
+                        <Button Content="Alle partijen" Style="{StaticResource WebsiteFilterButtonStyle}" Click="FilterAll"/>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Parties Grid like website -->
+            <Grid x:Name="PartiesContainer" Margin="40,0,40,40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- VVD -->
+                <Border Grid.Column="0" Grid.Row="0" Style="{StaticResource WebsitePartyCardStyle}" x:Name="VVD_Card">
+                    <StackPanel>
+                        <TextBlock Text="VVD" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="De VVD staat bekend om haar marktliberale koers. Het bevorderen van ondernemerschap, groei en individuele verantwoordelijkheid staan centraal." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Liberaal" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- PvdA -->
+                <Border Grid.Column="1" Grid.Row="0" Style="{StaticResource WebsitePartyCardStyle}" x:Name="PvdA_Card">
+                    <StackPanel>
+                        <TextBlock Text="PvdA" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="De PvdA is een sociaaldemocratische partij die zich richt op gelijke kansen, sociale zekerheid en collectieve voorzieningen." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Sociaaldemocratisch" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- FvD -->
+                <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource WebsitePartyCardStyle}" x:Name="FvD_Card">
+                    <StackPanel>
+                        <TextBlock Text="FvD" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="Forum voor Democratie (FvD) is een rechts-populistische partij die streeft naar directe democratie en migratiebeperking en nationale soevereiniteit van Nederland." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Rechts-populistisch" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- D66 -->
+                <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource WebsitePartyCardStyle}" x:Name="D66_Card">
+                    <StackPanel>
+                        <TextBlock Text="D66" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="D66 streeft naar meer democratische burgerschapsschapen en investeringen in onderwijs en innovatie." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Progressief-liberaal" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- GroenLinks -->
+                <Border Grid.Column="0" Grid.Row="2" Style="{StaticResource WebsitePartyCardStyle}" x:Name="GroenLinks_Card">
+                    <StackPanel>
+                        <TextBlock Text="GroenLinks" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="GroenLinks richt zich op klimaatbeleid, sociale rechtvaardigheid en duurzaamheid." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Millieucentrum" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- SP -->
+                <Border Grid.Column="1" Grid.Row="2" Style="{StaticResource WebsitePartyCardStyle}" x:Name="SP_Card">
+                    <StackPanel>
+                        <TextBlock Text="SP" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="De SP is een linkse partij die zich inzet voor armoedebestrijding, betaalbare woningen en sterke collectieve voorzieningen." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Linkse" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- ChristenUnie -->
+                <Border Grid.Column="0" Grid.Row="3" Style="{StaticResource WebsitePartyCardStyle}" x:Name="ChristenUnie_Card">
+                    <StackPanel>
+                        <TextBlock Text="ChristenUnie" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="De ChristenUnie is een conservatieve partij die zich richt op familiemaarden, religieuze vrijheid en maatschappelijke verantwoordelijkheid." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Conservatief" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- PVV -->
+                <Border Grid.Column="1" Grid.Row="3" Style="{StaticResource WebsitePartyCardStyle}" x:Name="PVV_Card">
+                    <StackPanel>
+                        <TextBlock Text="PVV" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="De PVV is een rechts-populistische partij die zich richt op migratiebeperking, volkssoevereiniteit en handhaving van de Nederlandse identiteit." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Rechts-populistisch" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- CDA -->
+                <Border Grid.Column="0" Grid.Row="4" Style="{StaticResource WebsitePartyCardStyle}" x:Name="CDA_Card">
+                    <StackPanel>
+                        <TextBlock Text="CDA" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="Het CDA is een christendemocratische partij die streeft naar evenwicht tussen markt en mens, duurzaamheid en traditie." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Conservatief" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- SGP -->
+                <Border Grid.Column="1" Grid.Row="4" Style="{StaticResource WebsitePartyCardStyle}" x:Name="SGP_Card">
+                    <StackPanel>
+                        <TextBlock Text="SGP" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="De SGP is een kleine orthodox-christelijke partij die zich richt op gereformeerde traditie en conservatisme." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Overige" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Volt -->
+                <Border Grid.Column="0" Grid.Row="5" Style="{StaticResource WebsitePartyCardStyle}" x:Name="Volt_Card">
+                    <StackPanel>
+                        <TextBlock Text="Volt" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="Volt is een progressieve, pro-Europese partij die streeft naar vernieuwing van de democratie en samenwerking binnen Europa." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Overige" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- JA21 -->
+                <Border Grid.Column="1" Grid.Row="5" Style="{StaticResource WebsitePartyCardStyle}" x:Name="JA21_Card">
+                    <StackPanel>
+                        <TextBlock Text="JA21" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="JA21 is een rechts-populistische partij die zich richt op migratiebeperking en EU-scepticisme." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Overige" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- DENK -->
+                <Border Grid.Column="0" Grid.Row="6" Style="{StaticResource WebsitePartyCardStyle}" x:Name="DENK_Card">
+                    <StackPanel>
+                        <TextBlock Text="Denk" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="DENK is een partij die zich richt op diversiteit, tolerantie en burgerrechten." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Overige" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- BBB -->
+                <Border Grid.Column="1" Grid.Row="6" Style="{StaticResource WebsitePartyCardStyle}" x:Name="BBB_Card">
+                    <StackPanel>
+                        <TextBlock Text="BBB" FontSize="24" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,8"/>
+                        <TextBlock Text="Boeren Burger Beweging (BBB) richt zich op belangenbehartiging van boeren en plattelandspolitiek." 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}" 
+                                  TextWrapping="Wrap"/>
+                        <TextBlock Text="Overige" FontSize="12" 
+                                  Foreground="{StaticResource AccentGreen}" 
+                                  Margin="0,8,0,0" Visibility="Collapsed"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

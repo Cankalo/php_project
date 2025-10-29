@@ -1,0 +1,242 @@
+﻿<UserControl x:Class="NeutraalKieslab.OverOnsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+
+    <UserControl.Resources>
+        <!-- Colors to match website -->
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#2C3E50"/>
+        <SolidColorBrush x:Key="LightBlue" Color="#5A6C7D"/>
+        <SolidColorBrush x:Key="AccentGreen" Color="#27AE60"/>
+        <SolidColorBrush x:Key="LightGray" Color="#ECF0F1"/>
+        <SolidColorBrush x:Key="DarkGray" Color="#7F8C8D"/>
+
+        <!-- Section Style like website -->
+        <Style x:Key="WebsiteSectionStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Margin" Value="0,0,0,30"/>
+            <Setter Property="Padding" Value="60,40"/>
+        </Style>
+
+        <!-- Team Card Style -->
+        <Style x:Key="TeamCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Padding" Value="30"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="LightGray" Direction="270" ShadowDepth="2" Opacity="0.4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Background="{StaticResource LightGray}">
+
+            <!-- Header Section like website -->
+            <Border Style="{StaticResource WebsiteSectionStyle}">
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Over Neutraal Kieslab" 
+                              FontSize="36" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+                    <TextBlock Text="Wij zijn een onafhankelijke stemwijzer die kiezers helpt" 
+                              FontSize="18" Foreground="{StaticResource DarkGray}"
+                              HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                    <TextBlock Text="een goed geïnformeerde keuze te maken bij verkiezingen." 
+                              FontSize="18" Foreground="{StaticResource DarkGray}"
+                              HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Mission Section like website -->
+            <Border Style="{StaticResource WebsiteSectionStyle}" Background="#F8F9FA">
+                <StackPanel>
+                    <TextBlock Text="Onze Missie" 
+                              FontSize="28" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}"
+                              HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+                    <TextBlock Text="Democratie is belangrijk. Maar het is vaak lastig om als kiezer een goede keuze te maken." 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              TextWrapping="Wrap" HorizontalAlignment="Center" 
+                              TextAlignment="Center" MaxWidth="800" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Met zoveel verschillende partijen en standpunten kan het overweldigend zijn. Daarom hebben wij" 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              TextWrapping="Wrap" HorizontalAlignment="Center" 
+                              TextAlignment="Center" MaxWidth="800" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Neutraal Kieslab opgericht: een onpartijdige stemwijzer die je helpt de partij te vinden die" 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              TextWrapping="Wrap" HorizontalAlignment="Center" 
+                              TextAlignment="Center" MaxWidth="800" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="het beste bij jouw waarden en standpunten past." 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              TextWrapping="Wrap" HorizontalAlignment="Center" 
+                              TextAlignment="Center" MaxWidth="800"/>
+                </StackPanel>
+            </Border>
+
+            <!-- What We Do Section -->
+            <Border Style="{StaticResource WebsiteSectionStyle}">
+                <StackPanel>
+                    <TextBlock Text="Waarom ons platform?" 
+                              FontSize="28" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}"
+                              HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+                    <TextBlock Text="Onze stemwijzer is gebaseerd op actuele partijprogramma's en officiële standpunten. We presenteren" 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              TextWrapping="Wrap" HorizontalAlignment="Center" 
+                              TextAlignment="Center" MaxWidth="800" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="de informatie neutraal en objectief, zonder politieke voorkeuren of beïnvloeding. Zo kun je een" 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              TextWrapping="Wrap" HorizontalAlignment="Center" 
+                              TextAlignment="Center" MaxWidth="800" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="weloverwogen beslissing maken die aansluit bij jouw eigen overtuigingen." 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              TextWrapping="Wrap" HorizontalAlignment="Center" 
+                              TextAlignment="Center" MaxWidth="800"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Team Section -->
+            <Border Style="{StaticResource WebsiteSectionStyle}" Background="#F8F9FA">
+                <StackPanel>
+                    <TextBlock Text="Ons team" 
+                              FontSize="28" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}"
+                              HorizontalAlignment="Center" Margin="0,0,0,40"/>
+
+                    <!-- Team Grid -->
+                    <Grid MaxWidth="800" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Team Member 1 -->
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Center" Margin="20">
+                            <Border Width="100" Height="100" 
+                                   Background="{StaticResource LightGray}" 
+                                   CornerRadius="4" Margin="0,0,0,20">
+                                <Grid>
+                                    <Rectangle Width="60" Height="40" 
+                                             Fill="{StaticResource DarkGray}" 
+                                             VerticalAlignment="Top" Margin="0,20,0,0"/>
+                                    <Ellipse Width="30" Height="30" 
+                                            Fill="{StaticResource DarkGray}" 
+                                            VerticalAlignment="Top" Margin="0,10,0,0"/>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+
+                        <!-- Team Member 2 -->
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Center" Margin="20">
+                            <Border Width="100" Height="100" 
+                                   Background="{StaticResource LightGray}" 
+                                   CornerRadius="4" Margin="0,0,0,20">
+                                <Grid>
+                                    <Rectangle Width="60" Height="40" 
+                                             Fill="{StaticResource DarkGray}" 
+                                             VerticalAlignment="Top" Margin="0,20,0,0"/>
+                                    <Ellipse Width="30" Height="30" 
+                                            Fill="{StaticResource DarkGray}" 
+                                            VerticalAlignment="Top" Margin="0,10,0,0"/>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- Values Section -->
+            <Border Style="{StaticResource WebsiteSectionStyle}">
+                <StackPanel>
+                    <TextBlock Text="Onze waarden" 
+                              FontSize="28" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}"
+                              HorizontalAlignment="Center" Margin="0,0,0,40"/>
+
+                    <Grid MaxWidth="900" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Value 1: Onpartijdig -->
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Center" Margin="20">
+                            <Border Width="80" Height="80" 
+                                   Background="{StaticResource AccentGreen}" 
+                                   CornerRadius="40" Margin="0,0,0,20">
+                                <TextBlock Text="⚖️" FontSize="32" 
+                                          HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"/>
+                            </Border>
+                            <TextBlock Text="Onpartijdig" 
+                                      FontSize="20" FontWeight="Bold" 
+                                      Foreground="{StaticResource PrimaryBlue}"
+                                      HorizontalAlignment="Center"
+                                      Margin="0,0,0,15"/>
+                            <TextBlock Text="We nemen geen politieke standpunten in en behandelen alle partijen gelijk." 
+                                      FontSize="14" 
+                                      Foreground="{StaticResource DarkGray}"
+                                      TextAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+
+                        <!-- Value 2: Transparant -->
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Center" Margin="20">
+                            <Border Width="80" Height="80" 
+                                   Background="{StaticResource PrimaryBlue}" 
+                                   CornerRadius="40" Margin="0,0,0,20">
+                                <TextBlock Text="🔍" FontSize="32" 
+                                          HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"/>
+                            </Border>
+                            <TextBlock Text="Transparant" 
+                                      FontSize="20" FontWeight="Bold" 
+                                      Foreground="{StaticResource PrimaryBlue}"
+                                      HorizontalAlignment="Center"
+                                      Margin="0,0,0,15"/>
+                            <TextBlock Text="Onze methoden en bronnen zijn volledig open en controleerbaar voor iedereen." 
+                                      FontSize="14" 
+                                      Foreground="{StaticResource DarkGray}"
+                                      TextAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+
+                        <!-- Value 3: Betrouwbaar -->
+                        <StackPanel Grid.Column="2" HorizontalAlignment="Center" Margin="20">
+                            <Border Width="80" Height="80" 
+                                   Background="{StaticResource LightBlue}" 
+                                   CornerRadius="40" Margin="0,0,0,20">
+                                <TextBlock Text="✅" FontSize="32" 
+                                          HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"/>
+                            </Border>
+                            <TextBlock Text="Betrouwbaar" 
+                                      FontSize="20" FontWeight="Bold" 
+                                      Foreground="{StaticResource PrimaryBlue}"
+                                      HorizontalAlignment="Center"
+                                      Margin="0,0,0,15"/>
+                            <TextBlock Text="Alle informatie is gecontroleerd door politieke experts en journalisten." 
+                                      FontSize="14" 
+                                      Foreground="{StaticResource DarkGray}"
+                                      TextAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

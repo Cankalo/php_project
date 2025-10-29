@@ -1,0 +1,221 @@
+﻿<UserControl x:Class="NeutraalKieslab.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+
+    <UserControl.Resources>
+        <!-- Colors to match website -->
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#2C3E50"/>
+        <SolidColorBrush x:Key="LightBlue" Color="#5A6C7D"/>
+        <SolidColorBrush x:Key="AccentGreen" Color="#27AE60"/>
+        <SolidColorBrush x:Key="LightGray" Color="#ECF0F1"/>
+        <SolidColorBrush x:Key="DarkGray" Color="#7F8C8D"/>
+
+        <!-- Input Style like website -->
+        <Style x:Key="WebsiteInputStyle" TargetType="TextBox">
+            <Setter Property="Padding" Value="15,15,15,15"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="#E2E8F0"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource AccentGreen}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Password Style like website -->
+        <Style x:Key="WebsitePasswordStyle" TargetType="PasswordBox">
+            <Setter Property="Padding" Value="15,15,15,15"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="#E2E8F0"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Margin" Value="0,5,0,15"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource AccentGreen}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Login Button Style like website -->
+        <Style x:Key="LoginButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource PrimaryBlue}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,15,20,15"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="0,20,0,20"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="{StaticResource LightGray}">
+        <!-- Login Form Container - Centered like website -->
+        <Border x:Name="LoginFormPanel" Background="White" CornerRadius="8" 
+               MaxWidth="400" MaxHeight="500" 
+               HorizontalAlignment="Center" VerticalAlignment="Center"
+               Padding="40,40,40,40" Margin="40,40,40,40">
+            <Border.Effect>
+                <DropShadowEffect Color="LightGray" Direction="270" ShadowDepth="3" Opacity="0.4"/>
+            </Border.Effect>
+
+            <StackPanel>
+                <TextBlock Text="Log In bij Neutraal Kieslab" 
+                          FontSize="24" FontWeight="Bold" 
+                          Foreground="{StaticResource PrimaryBlue}" 
+                          HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+                <!-- Email Address -->
+                <TextBlock Text="Email Address" 
+                          FontSize="16" FontWeight="Bold" 
+                          Foreground="{StaticResource PrimaryBlue}" 
+                          Margin="0,0,0,5"/>
+                <TextBox x:Name="LoginEmail" 
+                        Style="{StaticResource WebsiteInputStyle}" 
+                        Text="demo@neutraalkieslab.nl"/>
+
+                <!-- Password -->
+                <TextBlock Text="Password" 
+                          FontSize="16" FontWeight="Bold" 
+                          Foreground="{StaticResource PrimaryBlue}" 
+                          Margin="0,0,0,5"/>
+                <PasswordBox x:Name="LoginPassword" 
+                            Style="{StaticResource WebsitePasswordStyle}"/>
+
+                <!-- Login Button -->
+                <Button Content="Login" 
+                       Style="{StaticResource LoginButtonStyle}" 
+                       Click="LoginButton_Click"/>
+
+                <!-- Sign up link - FIXED EVENT HANDLER -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Nog geen account? " 
+                              FontSize="14" Foreground="{StaticResource DarkGray}"/>
+                    <Button Content="Maak er nu een" 
+                           Background="Transparent" BorderThickness="0"
+                           FontSize="14" Foreground="#3182CE" 
+                           Cursor="Hand" Click="ShowRegistration_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <TextBlock TextDecorations="Underline" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+
+                <!-- Copyright -->
+                <TextBlock Text="© 2025 Neutraal Kieslab" 
+                          FontSize="12" Foreground="{StaticResource DarkGray}"
+                          HorizontalAlignment="Center" Margin="0,30,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Registration Form Container - Hidden by default -->
+        <Border x:Name="RegistrationFormPanel" Background="White" CornerRadius="8" 
+               MaxWidth="450" MaxHeight="700" 
+               HorizontalAlignment="Center" VerticalAlignment="Center"
+               Padding="40,40,40,40" Margin="40,40,40,40" Visibility="Collapsed">
+            <Border.Effect>
+                <DropShadowEffect Color="LightGray" Direction="270" ShadowDepth="3" Opacity="0.4"/>
+            </Border.Effect>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="Account Aanmaken" 
+                              FontSize="24" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+                    <!-- Email Address -->
+                    <TextBlock Text="Email Address" 
+                              FontSize="16" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              Margin="0,0,0,5"/>
+                    <TextBox x:Name="RegisterEmail" 
+                            Style="{StaticResource WebsiteInputStyle}" 
+                            Text=""/>
+
+                    <!-- Password -->
+                    <TextBlock Text="Password" 
+                              FontSize="16" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              Margin="0,0,0,5"/>
+                    <PasswordBox x:Name="RegisterPassword" 
+                                Style="{StaticResource WebsitePasswordStyle}"/>
+
+                    <!-- Voornaam -->
+                    <TextBlock Text="Voornaam" 
+                              FontSize="16" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              Margin="0,0,0,5"/>
+                    <TextBox x:Name="RegisterFirstName" 
+                            Style="{StaticResource WebsiteInputStyle}"/>
+
+                    <!-- Achternaam -->
+                    <TextBlock Text="Achternaam" 
+                              FontSize="16" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              Margin="0,0,0,5"/>
+                    <TextBox x:Name="RegisterLastName" 
+                            Style="{StaticResource WebsiteInputStyle}"/>
+
+                    <!-- Telefoonnummer -->
+                    <TextBlock Text="Telefoonnummer" 
+                              FontSize="16" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              Margin="0,0,0,5"/>
+                    <TextBox x:Name="RegisterPhone" 
+                            Style="{StaticResource WebsiteInputStyle}"/>
+
+                    <!-- Register Button -->
+                    <Button Content="Account Aanmaken" 
+                           Style="{StaticResource LoginButtonStyle}" 
+                           Click="RegisterButton_Click"/>
+
+                    <!-- Login link - FIXED EVENT HANDLER -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Heb je al een account? " 
+                                  FontSize="14" Foreground="{StaticResource DarkGray}"/>
+                        <Button Content="Log hier in" 
+                               Background="Transparent" BorderThickness="0"
+                               FontSize="14" Foreground="#3182CE" 
+                               Cursor="Hand"
+                               Click="ShowLogin_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Button">
+                                                <TextBlock TextDecorations="Underline" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
+
+                    <!-- Copyright -->
+                    <TextBlock Text="© 2025 Neutraal Kieslab" 
+                              FontSize="12" Foreground="{StaticResource DarkGray}"
+                              HorizontalAlignment="Center" Margin="0,20,0,0"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>

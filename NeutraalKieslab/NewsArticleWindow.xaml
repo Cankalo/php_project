@@ -1,0 +1,159 @@
+﻿<Window x:Class="NeutraalKieslab.NewsArticleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Nieuws Artikel" Height="700" Width="900" 
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize"
+        Background="#F7FAFC">
+
+    <Window.Resources>
+        <!-- Colors to match app -->
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#2C3E50"/>
+        <SolidColorBrush x:Key="LightBlue" Color="#5A6C7D"/>
+        <SolidColorBrush x:Key="AccentGreen" Color="#27AE60"/>
+        <SolidColorBrush x:Key="LightGray" Color="#ECF0F1"/>
+        <SolidColorBrush x:Key="DarkGray" Color="#7F8C8D"/>
+        <SolidColorBrush x:Key="BreakingRed" Color="#E53E3E"/>
+
+        <!-- Close Button Style -->
+        <Style x:Key="CloseButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource LightGray}"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkGray}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource DarkGray}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Share Button Style -->
+        <Style x:Key="ShareButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource AccentGreen}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="0.8"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="White" Padding="30,20" BorderBrush="{StaticResource LightGray}" BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Breaking News Badge -->
+                <StackPanel x:Name="BreakingBadge" Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10" Visibility="Collapsed">
+                    <Border Background="{StaticResource BreakingRed}" CornerRadius="12" Padding="12,4">
+                        <TextBlock Text="🔴 BREAKING NEWS" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                    </Border>
+                </StackPanel>
+
+                <!-- Title -->
+                <TextBlock x:Name="ArticleTitle" Grid.Row="1"
+                          Text="Artikel Titel Komt Hier"
+                          FontSize="28" FontWeight="Bold" 
+                          Foreground="{StaticResource PrimaryBlue}"
+                          TextWrapping="Wrap" Margin="0,0,0,15"/>
+
+                <!-- Metadata -->
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <Border Background="{StaticResource LightGray}" CornerRadius="4" Padding="8,4" Margin="0,0,10,0">
+                        <TextBlock x:Name="CategoryText" Text="📂 Categorie" FontSize="12" Foreground="{StaticResource DarkGray}"/>
+                    </Border>
+                    <Border Background="{StaticResource LightGray}" CornerRadius="4" Padding="8,4" Margin="0,0,10,0">
+                        <TextBlock x:Name="SourceText" Text="📍 Bron" FontSize="12" Foreground="{StaticResource DarkGray}"/>
+                    </Border>
+                    <Border Background="{StaticResource LightGray}" CornerRadius="4" Padding="8,4" Margin="0,0,10,0">
+                        <TextBlock x:Name="DateText" Text="📅 Datum" FontSize="12" Foreground="{StaticResource DarkGray}"/>
+                    </Border>
+                    <Border Background="{StaticResource LightGray}" CornerRadius="4" Padding="8,4">
+                        <TextBlock x:Name="AuthorText" Text="✍️ Auteur" FontSize="12" Foreground="{StaticResource DarkGray}"/>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Article Content -->
+        <ScrollViewer Grid.Row="1" Padding="30" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <!-- Summary -->
+                <Border Background="White" CornerRadius="8" Padding="25" Margin="0,0,0,20">
+                    <Border.Effect>
+                        <DropShadowEffect Color="LightGray" Direction="270" ShadowDepth="2" Opacity="0.3"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <TextBlock Text="📋 Samenvatting" FontSize="16" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,10"/>
+                        <TextBlock x:Name="SummaryText" 
+                                  Text="Artikel samenvatting komt hier..."
+                                  FontSize="16" LineHeight="24"
+                                  Foreground="{StaticResource DarkGray}"
+                                  TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Full Content -->
+                <Border Background="White" CornerRadius="8" Padding="25">
+                    <Border.Effect>
+                        <DropShadowEffect Color="LightGray" Direction="270" ShadowDepth="2" Opacity="0.3"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <TextBlock Text="📄 Volledig Artikel" FontSize="16" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,15"/>
+                        <TextBlock x:Name="ContentText" 
+                                  Text="Volledige artikel inhoud komt hier..."
+                                  FontSize="15" LineHeight="26"
+                                  Foreground="#2D3748"
+                                  TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Tags -->
+                <Border x:Name="TagsContainer" Background="White" CornerRadius="8" Padding="25" Margin="0,20,0,0" Visibility="Collapsed">
+                    <Border.Effect>
+                        <DropShadowEffect Color="LightGray" Direction="270" ShadowDepth="2" Opacity="0.3"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <TextBlock Text="🏷️ Tags" FontSize="14" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" Margin="0,0,0,10"/>
+                        <WrapPanel x:Name="TagsPanel">
+                            <!-- Tags will be added dynamically -->
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Footer Buttons -->
+        <Border Grid.Row="2" Background="White" Padding="30,15" BorderBrush="{StaticResource LightGray}" BorderThickness="0,1,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="📤 Delen" Style="{StaticResource ShareButtonStyle}" Click="ShareArticle"/>
+                <Button Content="❌ Sluiten" Style="{StaticResource CloseButtonStyle}" Click="CloseWindow"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

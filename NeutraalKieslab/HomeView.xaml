@@ -1,0 +1,176 @@
+﻿<UserControl x:Class="NeutraalKieslab.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+
+    <UserControl.Resources>
+        <!-- Colors to match website -->
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#2C3E50"/>
+        <SolidColorBrush x:Key="LightBlue" Color="#5A6C7D"/>
+        <SolidColorBrush x:Key="AccentGreen" Color="#27AE60"/>
+        <SolidColorBrush x:Key="LightGray" Color="#ECF0F1"/>
+        <SolidColorBrush x:Key="DarkGray" Color="#7F8C8D"/>
+        <SolidColorBrush x:Key="WebsiteBlue" Color="#4A5568"/>
+
+        <!-- Button Style like website -->
+        <Style x:Key="WebsiteButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource LightBlue}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="25,12"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PrimaryBlue}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Card Style like website -->
+        <Style x:Key="WebsiteCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Padding" Value="30"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="LightGray" Direction="270" ShadowDepth="2" Opacity="0.4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Background="{StaticResource LightGray}">
+
+            <!-- Hero Section - Like website -->
+            <Border Background="White" Padding="60" Margin="0,0,0,40">
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Welkom Bij Neutraal Kieslab" 
+                              FontSize="42" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Onpartijdig, Betrouwbaar &amp; Transparant" 
+                              FontSize="18" Foreground="{StaticResource DarkGray}" 
+                              HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+                    <Button Content="start met stemmen →" 
+                           Style="{StaticResource WebsiteButtonStyle}"
+                           Click="StartStemwijzer"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Gray section like website -->
+            <Border Background="#E2E8F0" Padding="60,50">
+                <StackPanel>
+                    <TextBlock Text="Waarom kiezen voor Neutraal Kieslab?" 
+                              FontSize="28" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}"
+                              HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+                    <TextBlock Text="We helpen kiezers zonder beïnvloeding te vinden welke partij het beste bij" 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                    <TextBlock Text="hen past. Door gebruik te maken van neutrale kleuren en duidelijke" 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                    <TextBlock Text="informatie willen we zorgen voor toegankelijkheid en professionaliteit." 
+                              FontSize="16" Foreground="{StaticResource DarkGray}"
+                              HorizontalAlignment="Center" Margin="0,0,0,40"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Three Cards Section - Like website -->
+            <Grid Margin="40,60,40,60">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Card 1: Neutrale Stemwijzer -->
+                <Border Grid.Column="0" Style="{StaticResource WebsiteCardStyle}">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="Neutrale Stemwijzer" 
+                                  FontSize="22" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" 
+                                  HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                        <TextBlock Text="Vind jouw meest" 
+                                  FontSize="16" Foreground="{StaticResource DarkGray}"
+                                  HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                        <TextBlock Text="overeenkomende partij zonder" 
+                                  FontSize="16" Foreground="{StaticResource DarkGray}"
+                                  HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                        <TextBlock Text="beïnvloeding." 
+                                  FontSize="16" Foreground="{StaticResource DarkGray}"
+                                  HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Card 2: Informatie over Partijen -->
+                <Border Grid.Column="1" Style="{StaticResource WebsiteCardStyle}">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="Informatie over Partijen" 
+                                  FontSize="22" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" 
+                                  HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                        <TextBlock Text="Bekijk de standpunten van" 
+                                  FontSize="16" Foreground="{StaticResource DarkGray}"
+                                  HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                        <TextBlock Text="politieke partijen op een heldere" 
+                                  FontSize="16" Foreground="{StaticResource DarkGray}"
+                                  HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                        <TextBlock Text="manier." 
+                                  FontSize="16" Foreground="{StaticResource DarkGray}"
+                                  HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Card 3: Profielregistratie -->
+                <Border Grid.Column="2" Style="{StaticResource WebsiteCardStyle}">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="Profielregistratie" 
+                                  FontSize="22" FontWeight="Bold" 
+                                  Foreground="{StaticResource PrimaryBlue}" 
+                                  HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                        <TextBlock Text="Sla jouw resultaten op en" 
+                                  FontSize="16" Foreground="{StaticResource DarkGray}"
+                                  HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                        <TextBlock Text="volg je voorkeuren in de" 
+                                  FontSize="16" Foreground="{StaticResource DarkGray}"
+                                  HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                        <TextBlock Text="toekomst." 
+                                  FontSize="16" Foreground="{StaticResource DarkGray}"
+                                  HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Bottom CTA Section - Like website -->
+            <Border Background="{StaticResource LightBlue}" Padding="60,40">
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Benieuwd welke partij het beste bij jou past?" 
+                              FontSize="24" FontWeight="Bold" 
+                              Foreground="White" 
+                              HorizontalAlignment="Center" Margin="0,0,0,25"/>
+
+                    <Button Content="start de stemwijzer" 
+                           Background="White" 
+                           Foreground="{StaticResource PrimaryBlue}"
+                           BorderThickness="0"
+                           Padding="25,12"
+                           FontSize="16"
+                           HorizontalAlignment="Center"
+                           Click="StartStemwijzer"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

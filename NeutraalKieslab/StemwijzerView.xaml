@@ -1,0 +1,235 @@
+﻿<UserControl x:Class="NeutraalKieslab.StemwijzerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+
+    <UserControl.Resources>
+        <!-- Colors to match website -->
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#2C3E50"/>
+        <SolidColorBrush x:Key="LightBlue" Color="#5A6C7D"/>
+        <SolidColorBrush x:Key="AccentGreen" Color="#27AE60"/>
+        <SolidColorBrush x:Key="LightGray" Color="#ECF0F1"/>
+        <SolidColorBrush x:Key="DarkGray" Color="#7F8C8D"/>
+        <SolidColorBrush x:Key="WebsiteGreen" Color="#48BB78"/>
+        <SolidColorBrush x:Key="WebsiteRed" Color="#F56565"/>
+
+        <!-- Answer Button Styles like website -->
+        <Style x:Key="EensButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource WebsiteGreen}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,12"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style x:Key="NeutraalButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBlue}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBlue}"/>
+            <Setter Property="Padding" Value="20,12"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style x:Key="OneensButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource WebsiteRed}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,12"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <!-- Card Style like website -->
+        <Style x:Key="QuestionCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Padding" Value="30"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="LightGray" Direction="270" ShadowDepth="2" Opacity="0.4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="{StaticResource LightGray}">
+        <!-- Question Panel -->
+        <Grid x:Name="QuestionPanel" Margin="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Left Top: Instructions -->
+            <Border Grid.Column="0" Grid.Row="0" Style="{StaticResource QuestionCardStyle}" 
+                   Background="#E2E8F0">
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="vul 5 korte" 
+                              FontSize="24" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              Margin="0,0,0,5"/>
+                    <TextBlock Text="stellingen in" 
+                              FontSize="24" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              Margin="0,0,0,5"/>
+                    <TextBlock Text="en ontdek jouw" 
+                              FontSize="24" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              Margin="0,0,0,5"/>
+                    <TextBlock Text="politieke match." 
+                              FontSize="24" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}" 
+                              Margin="0,0,0,25"/>
+
+                    <Button Content="begin de stemwijzer" 
+                           Background="{StaticResource PrimaryBlue}" 
+                           Foreground="White"
+                           BorderThickness="0"
+                           Padding="20,12"
+                           FontSize="16"
+                           Click="StartQuiz"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Right Top: Current Question -->
+            <Border Grid.Column="1" Grid.Row="0" Style="{StaticResource QuestionCardStyle}"
+                   x:Name="CurrentQuestionCard">
+                <StackPanel>
+                    <TextBlock x:Name="QuestionText" 
+                              Text="Nederland moet zo snel mogelijk stoppen met fossiele subsidies." 
+                              FontSize="20" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}"
+                              TextWrapping="Wrap" Margin="0,0,0,30"/>
+
+                    <Button Content="eens" Style="{StaticResource EensButtonStyle}" 
+                           Click="AnswerEens" Margin="0,5"/>
+                    <Button Content="neutraal" Style="{StaticResource NeutraalButtonStyle}" 
+                           Click="AnswerNeutraal" Margin="0,5"/>
+                    <Button Content="oneens" Style="{StaticResource OneensButtonStyle}" 
+                           Click="AnswerOneens" Margin="0,5"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Left Bottom: Previous Question (if any) -->
+            <Border Grid.Column="0" Grid.Row="1" Style="{StaticResource QuestionCardStyle}"
+                   x:Name="PreviousQuestionCard" Background="#F7FAFC">
+                <StackPanel>
+                    <TextBlock x:Name="PreviousQuestionText" 
+                              Text="kernenergie moet een belangrijk onderdeel worden van ons energie-systeem." 
+                              FontSize="18" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}"
+                              TextWrapping="Wrap" Margin="0,0,0,20"/>
+
+                    <Button Content="eens" Style="{StaticResource EensButtonStyle}" 
+                           IsEnabled="False" Margin="0,3"/>
+                    <Button Content="neutraal" Style="{StaticResource NeutraalButtonStyle}" 
+                           IsEnabled="False" Margin="0,3"/>
+                    <Button Content="oneens" Style="{StaticResource OneensButtonStyle}" 
+                           IsEnabled="False" Margin="0,3"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Right Bottom: Results Preview -->
+            <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource QuestionCardStyle}"
+                   x:Name="ResultsPreviewCard" Background="#F0FFF4">
+                <StackPanel>
+                    <TextBlock Text="dit zijn jou politieke matches:" 
+                              FontSize="18" FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryBlue}"
+                              Margin="0,0,0,20"/>
+
+                    <StackPanel x:Name="PartialResults">
+                        <TextBlock Text="D66: ... %" FontSize="16" 
+                                  Foreground="{StaticResource WebsiteGreen}" Margin="0,2"/>
+                        <TextBlock Text="GroenLinks: ... %" FontSize="16" 
+                                  Foreground="{StaticResource WebsiteGreen}" Margin="0,2"/>
+                        <TextBlock Text="VVD: ... %" FontSize="16" 
+                                  Foreground="{StaticResource WebsiteGreen}" Margin="0,2"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- Results Panel - Full Screen -->
+        <Border x:Name="ResultsPanel" Background="White" 
+               Margin="40" Padding="40" Visibility="Collapsed"
+               CornerRadius="8">
+            <Border.Effect>
+                <DropShadowEffect Color="LightGray" Direction="270" ShadowDepth="3" Opacity="0.4"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="🎉 Jouw Politieke Matches" FontSize="32" FontWeight="Bold" 
+                          Foreground="{StaticResource PrimaryBlue}" 
+                          HorizontalAlignment="Center" Margin="0,0,0,40"/>
+
+                <ScrollViewer Height="400" VerticalScrollBarVisibility="Auto">
+                    <ItemsControl x:Name="ResultsList">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="{StaticResource LightGray}" 
+                                       CornerRadius="8" Margin="0,8" Padding="25">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="120"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock Text="{Binding PartyName}" FontSize="20" FontWeight="Bold" 
+                                                      Foreground="{StaticResource PrimaryBlue}"/>
+                                            <TextBlock Text="{Binding Description}" FontSize="14" 
+                                                      Foreground="{StaticResource DarkGray}"/>
+                                        </StackPanel>
+
+                                        <TextBlock Grid.Column="1" Text="{Binding PercentageText}" 
+                                                  FontSize="28" FontWeight="Bold" 
+                                                  Foreground="{StaticResource WebsiteGreen}"
+                                                  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+                    <Button Content="🔄 Opnieuw Doen" Background="{StaticResource LightBlue}" 
+                           Foreground="White" Padding="20,12" BorderThickness="0" 
+                           Margin="0,0,20,0" Click="RestartQuiz"/>
+                    <Button Content="📋 Bekijk Partijen" Background="{StaticResource WebsiteGreen}" 
+                           Foreground="White" Padding="20,12" BorderThickness="0"
+                           Click="ViewParties"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Bottom CTA - Like website -->
+        <Border VerticalAlignment="Bottom" Background="{StaticResource LightBlue}" 
+               Padding="40,25" x:Name="BottomCTA">
+            <TextBlock Text="Benieuwd welke partij het beste bij jou past?" 
+                      FontSize="20" FontWeight="Bold" 
+                      Foreground="White" 
+                      HorizontalAlignment="Center"/>
+        </Border>
+    </Grid>
+</UserControl>
